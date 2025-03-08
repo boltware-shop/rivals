@@ -61,6 +61,11 @@
         .user-input {
             margin-bottom: 20px;
         }
+        .button-group {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -78,7 +83,11 @@
             <input type="text" id="targetUser" placeholder="Enter target username">
         </div>
         <div class="panel">
-            <button class="btn" onclick="fakeAction('ban')">Ban User</button>
+            <div class="button-group">
+                <button class="btn" onclick="fakeAction('permban')">Permanent Ban</button>
+                <button class="btn" onclick="fakeAction('reportban')">Report Ban</button>
+                <button class="btn" onclick="fakeAction('affban')">Affiliate Ban (30 days)</button>
+            </div>
             <button class="btn" onclick="fakeAction('unban')">Unban User</button>
             <button class="btn" onclick="fakeAction('kick')">Kick User</button>
             <button class="btn" onclick="fakeAction('logs')">View Logs</button>
@@ -116,7 +125,9 @@
             }
             
             const messages = {
-                "ban": `${targetUser} has been banned successfully.`,
+                "permban": `${targetUser} has been permanently banned successfully.`,
+                "reportban": `${targetUser} has been banned for reported violations.`,
+                "affban": `${targetUser} has been banned for 30 days due to affiliate violations.`,
                 "unban": `${targetUser} has been unbanned successfully.`,
                 "kick": `${targetUser} has been kicked from the server.`,
                 "logs": "Displaying recent staff logs...",
